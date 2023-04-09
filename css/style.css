@@ -2,11 +2,9 @@
     margin: 0;
 }
 body{
-    background: rgb(56, 56, 179);
+    background: linear-gradient(darkblue, lightblue);
 }
 .hero_card{
-    width: 600px;
-    height: 1000px;
     margin: 2%;
     border: 2px solid rgb(56, 56, 179);
     border-radius: 5%;
@@ -18,9 +16,14 @@ body{
 }
 .hero_card img{
     padding-top: 4%;
-    width: 600px;
+    width: 100%;
 }
 .hero_card h2{
     text-align: center;
     padding-bottom: 3%;
+}
+.hero_content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
