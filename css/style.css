@@ -1,25 +1,43 @@
 *{
     margin: 0;
+    padding: 0;
 }
 body{
-    background: linear-gradient(darkblue, lightblue);
+    background: linear-gradient(to right,blue, violet);
+}
+.header{
+    display: flex;
+    justify-content: end;
+    height: 160px;
+    background: linear-gradient(to right,blue, violet);
+}
+.header_text{
+    padding-top: 2%;
+    font-family: 'Playfair Display', serif;
+    font-size: 4em;
+}
+.header_logo{
+    padding-top: 2%;
+    margin-right: 10%;
 }
 .hero_card{
-    margin: 2%;
-    border: 2px solid rgb(56, 56, 179);
+    margin: 3%;
+    border: 3px solid rgb(56, 56, 179);
     outline: solid 6px #888;
     border-radius: 5%;
     padding: 2%;
-    background-color:rgb(135, 173, 230);
+    background-color:rgb(194, 210, 235);
     font-family: 'Source Serif Pro', serif;
     letter-spacing: 1.5px;
-    font-size: 16px;
+    font-size: 1.1em;
+    cursor: pointer;
+    position: relative;
 }
-.hero_card img{
+.front img{
     padding-top: 4%;
     width: 100%;
 }
-.hero_card h2{
+.front h2{
     text-align: center;
     padding-bottom: 3%;
 }
@@ -28,15 +46,50 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
 }
-.header{
+.back-content{
+    text-align: center;
+}
+.front,
+.back{
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: transform .6s linear;
+}
+.front{
+    transform: perspective(600px) rotateY(0deg);
+}
+.back{
+    transform: perspective(600px) rotateY(180deg);
+}
+.hero_card:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+}
+.hero_card:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+}
+
+/*
+.rating{
     display: flex;
-    height: 160px;
-    background-color: rgb(172, 238, 229);
-    justify-content: space-around;
+    align-items: flex-end;
+    font-size: 40px;
+    line-height: 0.75;
 }
-.header_logo{
-padding-top: 1%;
+.rating-item{
+    width: 40px;
+    height: 40px;
+    background-color: green;
+    border: 2px solid #fff;
+    cursor: pointer;
 }
-.header_text{
-    padding: 2%;
+.rating_value{
+    font-size: 50%;
+    line-height: 1;
+    padding: 0 0 0 10px;
 }
+.rating_body{
+    position: relative;
+}
+.rating_body::before{
+    content: '';
+}*/

@@ -89,22 +89,34 @@ let heroJson = `[{
     "url" : "https://n1s1.hsmedia.ru/34/93/39/3493392c94fc2ae0552ef9c7e87f2617/728x382_1_cc2a743fd686b7b2e256c062966bb465@1034x543_0xac120002_2692921231540468872.jpg",
     "info": "Как и Росомаха из Людей Икс, Дэдпул был подвергнут опытам по программе «Оружие Икс». Ученые попытались исцелить его рак, привив его клеткам способность к регенерации. Как и всегда в комиксах, что-то пошло не так, и Дэдпул остался изуродованным и психически нестабильным. Это единственный супергерой из списка, который однозначно не на стороне добра. Дэдпул наслаждается насилием. Первоначально появившись в основной Вселенной Marvel, он получил альтернативные варианты в других реальностях Мультивселенной. Что оставалось неизменным — его циничное, чёрное чувство юмора: за него Дэдпула прозвали «Болтливым наёмником»."
 }]`;
-console.log(heroJson);
+//console.log(heroJson);
+let heroContent = "";
+/*
+document.addEventListener("DOMContentLoaded", function(event){
+    let herosArr = JSON.parse(heroJson);
+    console.log(herosArr);
+    for(let i = 0; i < herosArr.length; i++){
+        console.log(herosArr.length); 
+    }
+});*/
 
 document.addEventListener("DOMContentLoaded", function(event){
     let heroArr = JSON.parse(heroJson);
-    console.log(heroArr);
-    let heroContent = "";
+    //console.log(heroArr);
     for(let hero of heroArr){
         heroContent += `<div class="hero_card">
+        <div class="front">
         <h2>${hero.name}</h2>
         <p>Вселенная: ${hero.universe}</p>
         <p>Альтер эго: ${hero.alterego}</p>
         <p>Род деятельности: ${hero.occupation}</p>
         <p>Друзья: ${hero.friends}</p>
         <p>Суперсилы: ${hero.superpowers}</p>
-        <p>${hero.info}</p>
         <img src=${hero.url}>
+        </div>
+        <div class="back">
+        <p class="back-content">${hero.info}</p>
+        </div>
         </div>`
     }
     document.querySelector('.hero_content').innerHTML = heroContent;
