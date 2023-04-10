@@ -7,6 +7,7 @@ body{
 .hero_card{
     margin: 2%;
     border: 2px solid rgb(56, 56, 179);
+    outline: solid 6px #888;
     border-radius: 5%;
     padding: 2%;
     background-color:rgb(135, 173, 230);
@@ -26,4 +27,16 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.header{
+    display: flex;
+    height: 160px;
+    background-color: rgb(172, 238, 229);
+    justify-content: space-around;
+}
+.header_logo{
+padding-top: 1%;
+}
+.header_text{
+    padding: 2%;
 }
