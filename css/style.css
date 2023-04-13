@@ -26,12 +26,12 @@ body{
     outline: solid 6px #888;
     border-radius: 5%;
     padding: 2%;
-    background-color:rgb(194, 210, 235);
+    /* background-color:rgb(194, 210, 235);*/
     font-family: 'Source Serif Pro', serif;
     letter-spacing: 1.5px;
     font-size: 1.1em;
     cursor: pointer;
-    position: relative;
+    /*position: relative;*/
 }
 .front img{
     padding-top: 4%;
@@ -54,6 +54,7 @@ body{
     overflow: hidden;
     backface-visibility: hidden;
     transition: transform .6s linear;
+    /*position: absolute;*/
 }
 .front{
     transform: perspective(600px) rotateY(0deg);
@@ -67,29 +68,35 @@ body{
 .hero_card:hover > .back{
     transform: perspective(600px) rotateY(0deg);
 }
-
-/*
-.rating{
-    display: flex;
-    align-items: flex-end;
-    font-size: 40px;
-    line-height: 0.75;
-}
-.rating-item{
-    width: 40px;
-    height: 40px;
-    background-color: green;
-    border: 2px solid #fff;
-    cursor: pointer;
-}
-.rating_value{
-    font-size: 50%;
-    line-height: 1;
-    padding: 0 0 0 10px;
-}
-.rating_body{
+.rating {
     position: relative;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3em;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 2px #b3acac;
+    margin-top: 10px;
 }
-.rating_body::before{
-    content: '';
-}*/
+.rating__result {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-10px) translateX(-5px);
+    z-index: -9;
+    font: 3em Arial, Helvetica, sans-serif;
+    color: #c4c2c28e;
+    pointer-events: none;
+}
+.rating__star {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: #dabd18b2;
+    transition: filter linear .3s;
+}
+.rating__star:hover {
+    filter: drop-shadow(1px 1px 4px gold);
+}
