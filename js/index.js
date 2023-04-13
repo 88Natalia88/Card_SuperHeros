@@ -111,10 +111,10 @@ document.addEventListener("DOMContentLoaded", function(event){
         <p class="back-content">${hero.info}</p>
         </div>
         <div class="rating">
-        <span class="rating__result"></span> 
-        <i class="rating__star far fa-star"></i>
-        <i class="rating__star far fa-star"></i>
-        <i class="rating__star far fa-star"></i>
+        <span class="rating__result">0/5</span> 
+        <i class="rating__star far fa-star oneStars"></i>
+        <i class="rating__star far fa-star twoStars"></i>
+        <i class="rating__star far fa-star threeStars"></i>
         <i class="rating__star far fa-star"></i>
         <i class="rating__star far fa-star"></i>
     </div>
@@ -123,87 +123,169 @@ document.addEventListener("DOMContentLoaded", function(event){
     document.querySelector('.hero_content').innerHTML = heroContent;
     
  // создание массива всех звезд
-    let stars = document.getElementsByClassName('rating__star');
+    let stars = document.querySelectorAll('.rating i');
     //console.log(stars);
 
     //массив звезд 1 карточки
     let arrStars1 = [];
     arrStars1.push(stars[0], stars[1], stars[2], stars[3], stars[4]);
-    console.log(arrStars1);
+    //console.log(arrStars1);
 
     //массив звезд 2 карточки
     let arrStars2 = [];
     arrStars2.push(stars[5], stars[6], stars[7], stars[8], stars[9]);
-    console.log(arrStars2);
+    //console.log(arrStars2);
 
     //массив звезд 3 карточки
     let arrStars3 = [];
     arrStars3.push(stars[10], stars[11], stars[12], stars[13], stars[14]);
-    console.log(arrStars3);
+    //console.log(arrStars3);
 
     //массив звезд 4 карточки
     let arrStars4 = [];
     arrStars4.push(stars[15], stars[16], stars[17], stars[18], stars[19]);
-    console.log(arrStars4);
+    //console.log(arrStars4);
 
     //массив звезд 5 карточки
     let arrStars5 = [];
     arrStars5.push(stars[20], stars[21], stars[22], stars[23], stars[24]);
-    console.log(arrStars5);
+    //console.log(arrStars5);
 
     //массив звезд 6 карточки
     let arrStars6 = [];
     arrStars6.push(stars[25], stars[26], stars[27], stars[28], stars[29]);
-    console.log(arrStars6);
+    //console.log(arrStars6);
 
     //массив звезд 7 карточки
     let arrStars7 = [];
     arrStars7.push(stars[30], stars[31], stars[32], stars[33], stars[34]);
-    console.log(arrStars7);
+    //console.log(arrStars7);
 
     //массив звезд 8 карточки
     let arrStars8 = [];
     arrStars8.push(stars[35], stars[36], stars[37], stars[38], stars[39]);
-    console.log(arrStars8);
+   // console.log(arrStars8);
 
     //массив звезд 9 карточки
     let arrStars9 = [];
     arrStars9.push(stars[40], stars[41], stars[42], stars[43], stars[44]);
-    console.log(arrStars9);
+    //console.log(arrStars9);
 
     //массив звезд 10 карточки
     let arrStars10 = [];
     arrStars10.push(stars[45], stars[46], stars[47], stars[48], stars[49]);
-    console.log(arrStars10);
+    //console.log(arrStars10);
 
-    const ratingStars = [...document.getElementsByClassName("rating__star")];
+    let allArr = [arrStars1, arrStars2, arrStars3, arrStars4, arrStars5, arrStars6, arrStars7, arrStars8, arrStars9, arrStars10];
+   // console.log(allArr);
+
     const ratingResult = document.querySelector(".rating__result");
+    const starClassActive = "rating__star fas fa-star";
+    const starClassUnactive = "rating__star far fa-star";
 
-    printRatingResult(ratingResult);
+    //закрашиваем звездочки
 
-    function executeRating(stars, result) {
-        const starClassActive = "rating__star fas fa-star";
-        const starClassUnactive = "rating__star far fa-star";
-
-        let i;
-        stars.map((star) => {
-        star.onclick = () => {
-                i = stars.indexOf(star);
-                if (star.className.indexOf(starClassUnactive) !== -1) {
-                printRatingResult(result, i + 1);
-                for (i; i >= 0; --i) stars[i].className = starClassActive;
-                } else {
-                printRatingResult(result, i);
-                for (i; i < stars.length; ++i) stars[i].className = starClassUnactive;
-            }
-        };
-    });
-}
-    function printRatingResult(result, num = 0) {
-        result.textContent = `${num}/5`;
-    }
-executeRating(ratingStars, ratingResult);
+allArr.forEach(function(elem, i){
+    elem.forEach(function(star, index1){
+        star.addEventListener('click', function() {
+            elem.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index1);
+        });
+    })
+})
 });
+
+
+
+
+
+
+/*
+    arrStars1.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars1.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index1);
+        });
+    });
+    arrStars2.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars2.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+                console.log(index1 + 1);
+            }); //console.log(index2);
+        });
+    });
+    arrStars3.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars3.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index3);
+        });
+    });
+    arrStars4.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars4.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index4);
+        });
+    });
+    arrStars5.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars5.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index5);
+        });
+    });
+    arrStars6.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars6.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index6);
+        });
+    });
+    arrStars7.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars7.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index7);
+        });
+    });
+    arrStars8.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars8.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index8);
+        });
+    });
+    arrStars9.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars9.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index9);
+        });
+    });
+    arrStars10.forEach(function(star, index1) {
+        star.addEventListener('click', function() {
+            arrStars10.forEach(function(star, index2){
+                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+                ratingResult.textContent = `${index1 + 1}/5`;
+            }); //console.log(index10);
+        });
+    });*/
+
+
 
 /*
 const ratingStars = [...document.getElementsByClassName("rating__star")];
@@ -229,6 +311,7 @@ function executeRating(stars, result) {
         };
     });
 }
+
 
 function printRatingResult(result, num = 0) {
     result.textContent = `${num}/5`;
