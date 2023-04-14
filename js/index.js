@@ -93,28 +93,28 @@ let heroJson = `[{
 
 let heroContent = "";
 document.addEventListener("DOMContentLoaded", function(event){
-    //создание маасива из JSON
+    //создание массива из JSON
     let heroArr = JSON.parse(heroJson);
     //console.log(heroArr);
     for(let hero of heroArr){
         heroContent += `<div class="hero_card">
         <div class="front">
         <h2>${hero.name}</h2>
-        <p>Вселенная: ${hero.universe}</p>
-        <p>Альтер эго: ${hero.alterego}</p>
-        <p>Род деятельности: ${hero.occupation}</p>
-        <p>Друзья: ${hero.friends}</p>
-        <p>Суперсилы: ${hero.superpowers}</p>
+        <p><b>Вселенная:</b> ${hero.universe}</p>
+        <p><b>Альтер эго:</b> ${hero.alterego}</p>
+        <p><b>Род деятельности:</b> ${hero.occupation}</p>
+        <p><b>Друзья:</b> ${hero.friends}</p>
+        <p><b>Суперсилы:</b> ${hero.superpowers}</p>
         <img src=${hero.url}>
         </div>
         <div class="back">
-        <p class="back-content">${hero.info}</p>
+        <p class="back-content"><b>Информация:</b> ${hero.info}</p>
         </div>
         <div class="rating">
         <span class="rating__result">0/5</span> 
-        <i class="rating__star far fa-star oneStars"></i>
-        <i class="rating__star far fa-star twoStars"></i>
-        <i class="rating__star far fa-star threeStars"></i>
+        <i class="rating__star far fa-star"></i>
+        <i class="rating__star far fa-star"></i>
+        <i class="rating__star far fa-star"></i>
         <i class="rating__star far fa-star"></i>
         <i class="rating__star far fa-star"></i>
     </div>
@@ -191,7 +191,9 @@ allArr.forEach(function(elem, i){
             elem.forEach(function(star, index2){
                 index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
                 ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index1);
+                localStorage.setItem('rating', index1);
+            });
+           // JSON.parse(localStorage.getItem('rating'));
         });
     })
 })
