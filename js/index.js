@@ -182,16 +182,17 @@ document.addEventListener("DOMContentLoaded", function(event){
     const ratingResult = document.querySelector(".rating__result");
     const starClassActive = "rating__star fas fa-star";
     const starClassUnactive = "rating__star far fa-star";
-
+    let result = [];
     //закрашиваем звездочки
 
-allArr.forEach(function(elem, i){
+allArr.forEach(function(elem){
     elem.forEach(function(star, index1){
         star.addEventListener('click', function() {
             elem.forEach(function(star, index2){
                 index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
                 ratingResult.textContent = `${index1 + 1}/5`;
-                localStorage.setItem('rating', index1);
+                result = localStorage.setItem('rating', JSON.stringify(index1));
+
             });
            // JSON.parse(localStorage.getItem('rating'));
         });
