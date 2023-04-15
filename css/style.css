@@ -31,7 +31,7 @@ body{
     letter-spacing: 1.5px;
     font-size: 1.1em;
     cursor: pointer;
-    /*position: relative;*/
+    /* position: relative;*/
 }
 .front img{
     padding-top: 4%;
@@ -54,7 +54,7 @@ body{
     overflow: hidden;
     backface-visibility: hidden;
     transition: transform .6s linear;
-    /*position: absolute;*/
+    /* position: absolute;*/
 }
 .front{
     text-align: center;

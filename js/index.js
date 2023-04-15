@@ -179,25 +179,26 @@ document.addEventListener("DOMContentLoaded", function(event){
     let allArr = [arrStars1, arrStars2, arrStars3, arrStars4, arrStars5, arrStars6, arrStars7, arrStars8, arrStars9, arrStars10];
    // console.log(allArr);
 
-    const ratingResult = document.querySelector(".rating__result");
+    const ratingResult = document.querySelectorAll(".rating__result");
     const starClassActive = "rating__star fas fa-star";
     const starClassUnactive = "rating__star far fa-star";
-    let result = [];
+    let ratings = [];
+    //console.log(ratingResult);
     //закрашиваем звездочки
 
-allArr.forEach(function(elem){
+allArr.forEach(function(elem, i){
     elem.forEach(function(star, index1){
         star.addEventListener('click', function() {
             elem.forEach(function(star, index2){
                 index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-                result = localStorage.setItem('rating', JSON.stringify(index1));
-
+                ratingResult[i].textContent = `${index1 + 1}/5`;
             });
            // JSON.parse(localStorage.getItem('rating'));
         });
-    })
-})
+    });
+});
+    //console.log(ratings)
+    //localStorage.setItem('rating', JSON.stringify(res));
 });
 
 
