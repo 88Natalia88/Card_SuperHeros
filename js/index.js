@@ -184,12 +184,6 @@ document.addEventListener("DOMContentLoaded", function(){
     const starClassActive = "rating__star fas fa-star";
     const starClassUnactive = "rating__star far fa-star";
 
-    heroArr.forEach(function(hero, i){
-
-            console.log(hero.name)
-            //console.log(i)
-    }) 
-    //console.log(heroJson[index].name);
     //закрашиваем звездочки
 
 allArr.forEach(function(elem, i){
@@ -198,13 +192,13 @@ allArr.forEach(function(elem, i){
             elem.forEach(function(star, index2){
                 index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
                 ratingResult[i].textContent = `${index1 + 1}/5`;
+                localStorage.setItem(heroArr[i].name, JSON.stringify(index1));
             });
            // JSON.parse(localStorage.getItem('rating'));
         });
     });
 });
-    //console.log(ratings)
-    //localStorage.setItem('rating', JSON.stringify(res));
+    //
 });
 
 
