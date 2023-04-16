@@ -91,11 +91,12 @@ let heroJson = `[{
 }]`;
 //console.log(heroJson);
 
-let heroContent = "";
-document.addEventListener("DOMContentLoaded", function(event){
+
+document.addEventListener("DOMContentLoaded", function(){
     //создание массива из JSON
     let heroArr = JSON.parse(heroJson);
-    //console.log(heroArr);
+    let heroContent = "";
+    //console.log(event);
     for(let hero of heroArr){
         heroContent += `<div class="hero_card">
         <div class="front">
@@ -182,8 +183,13 @@ document.addEventListener("DOMContentLoaded", function(event){
     const ratingResult = document.querySelectorAll(".rating__result");
     const starClassActive = "rating__star fas fa-star";
     const starClassUnactive = "rating__star far fa-star";
-    let ratings = [];
-    //console.log(ratingResult);
+
+    heroArr.forEach(function(hero, i){
+
+            console.log(hero.name)
+            //console.log(i)
+    }) 
+    //console.log(heroJson[index].name);
     //закрашиваем звездочки
 
 allArr.forEach(function(elem, i){
