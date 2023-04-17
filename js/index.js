@@ -190,15 +190,29 @@ allArr.forEach(function(elem, i){
     elem.forEach(function(star, index1){
         star.addEventListener('click', function() {
             elem.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
+            index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
                 ratingResult[i].textContent = `${index1 + 1}/5`;
+
+                //добавляем результат в localStorage
                 localStorage.setItem(heroArr[i].name, JSON.stringify(index1));
+
+                //Вывод результата при перезагрузки страницы
+                let keys = Object.keys(localStorage);
+                //console.log(keys);
+                keys.forEach(function(key, i){
+                    let obj = `${key} : ${JSON.parse(localStorage.getItem(key))}`;
+                    console.log(obj);
+                    if(obj != null && key === heroArr[i].name){
+//что-то нужно написать
+                    }
+                });   
+                    //console.log(key);
             });
-           // JSON.parse(localStorage.getItem('rating'));
+            });
+            //let obj = `${key} : ${JSON.parse(localStorage.getItem(key))}`;
+            //console.log(JSON.parse(localStorage.getItem(heroArr[i].name)));
         });
     });
-});
-    //
 });
 
 
