@@ -184,6 +184,23 @@ document.addEventListener("DOMContentLoaded", function(){
     const starClassActive = "rating__star fas fa-star";
     const starClassUnactive = "rating__star far fa-star";
 
+    //вытаскиваем наши закрышенные звездочки из localStorage
+    const ratingArr = heroArr.map((hero) => {
+        if(localStorage.getItem(hero.name)) return {name: hero.name, rating: Number(localStorage.getItem(hero.name)) + 1};
+        return { name: hero.name, rating : 0};
+    });
+
+//console.log(ratingArr);
+
+    allArr.forEach((heroStars, index) => {
+        if(ratingArr[index].rating === 0) return heroStars.forEach((star) => star.className = starClassUnactive);
+        for(let j = 0; j < ratingArr[index].rating; j++){
+            heroStars[j].className = starClassActive;
+            ratingResult[index].textContent = `${ratingArr[index].rating}/5`;
+            //console.log(ratingArr[index].rating);
+        }
+    });
+
     //закрашиваем звездочки
 
 allArr.forEach(function(elem, i){
@@ -195,144 +212,8 @@ allArr.forEach(function(elem, i){
 
                 //добавляем результат в localStorage
                 localStorage.setItem(heroArr[i].name, JSON.stringify(index1));
-
-                //Вывод результата при перезагрузки страницы
-                let keys = Object.keys(localStorage);
-                //console.log(keys);
-                keys.forEach(function(key, i){
-                    let obj = `${key} : ${JSON.parse(localStorage.getItem(key))}`;
-                    console.log(obj);
-                    if(obj != null && key === heroArr[i].name){
-//что-то нужно написать
-                    }
-                });   
-                    //console.log(key);
             });
             });
-            //let obj = `${key} : ${JSON.parse(localStorage.getItem(key))}`;
-            //console.log(JSON.parse(localStorage.getItem(heroArr[i].name)));
         });
     });
 });
-
-
-
-
-
-
-/*
-    arrStars1.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars1.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index1);
-        });
-    });
-    arrStars2.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars2.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-                console.log(index1 + 1);
-            }); //console.log(index2);
-        });
-    });
-    arrStars3.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars3.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index3);
-        });
-    });
-    arrStars4.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars4.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index4);
-        });
-    });
-    arrStars5.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars5.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index5);
-        });
-    });
-    arrStars6.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars6.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index6);
-        });
-    });
-    arrStars7.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars7.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index7);
-        });
-    });
-    arrStars8.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars8.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index8);
-        });
-    });
-    arrStars9.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars9.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index9);
-        });
-    });
-    arrStars10.forEach(function(star, index1) {
-        star.addEventListener('click', function() {
-            arrStars10.forEach(function(star, index2){
-                index1 >= index2 ? star.className = starClassActive : star.className = starClassUnactive;
-                ratingResult.textContent = `${index1 + 1}/5`;
-            }); //console.log(index10);
-        });
-    });*/
-
-
-
-/*
-const ratingStars = [...document.getElementsByClassName("rating__star")];
-const ratingResult = document.querySelector(".rating__result");
-
-printRatingResult(ratingResult);
-
-function executeRating(stars, result) {
-    const starClassActive = "rating__star fas fa-star";
-    const starClassUnactive = "rating__star far fa-star";
-    const starsLength = stars.length;
-    let i;
-    stars.map((star) => {
-        star.onclick = () => {
-            i = stars.indexOf(star);
-            if (star.className.indexOf(starClassUnactive) !== -1) {
-            printRatingResult(result, i + 1);
-            for (i; i >= 0; --i) stars[i].className = starClassActive;
-            } else {
-            printRatingResult(result, i);
-            for (i; i < starsLength; ++i) stars[i].className = starClassUnactive;
-            }
-        };
-    });
-}
-
-
-function printRatingResult(result, num = 0) {
-    result.textContent = `${num}/5`;
-}
-
-executeRating(ratingStars, ratingResult);*/
