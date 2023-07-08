@@ -19,4 +19,4 @@ Information about the heroes is derived from the json file. There is an opportun
 ## Author
 ​
 Name<br>
-[@88Natalia88](https://github.com/88Natalia
+[@88Natalia88](https://github.com/88Natalia)
